@@ -1,0 +1,15 @@
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+kubernetesVersion: stable
+controlPlaneEndpoint: "{{FLOATIP}}:6449"
+etcd:
+ external:
+   endpoints:
+   {% for server in groups['etcd'] %}- https://{{hostvars[server]['ansible_facts']['default_ipv4']['address']}}:2379
+   {% endfor %}
+caFile: /etc/kubernetes/ca/ca.pem
+   certFile: /etc/kubernetes/ca/kubernetes.pem
+   keyFile: /etc/kubernetes/ca/kubernetes-key.pem
+networking:
+ podSubnet: 20.8.0.0/16
+

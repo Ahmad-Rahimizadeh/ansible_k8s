@@ -1,0 +1,10 @@
+- hosts: etcd 
+  remote_user: root
+- name: install-etcd
+  import_playbook: tasks/install.yml
+- name: etcd-keys
+  import_playbook: tasks/etcdkeys.yml
+- name: etcd-config
+  import_playbook: tasks/etcdconfig.yml
+- name: etcd-service
+  import_playbook: tasks/etcdservice.yml

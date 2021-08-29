@@ -1,0 +1,4 @@
+ETCD_VERSION: 3.3.13
+PATH_KEYS: /tmp/init-keys
+FLOATIP: 172.16.120.56
+

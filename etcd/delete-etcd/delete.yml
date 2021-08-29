@@ -1,0 +1,12 @@
+- hosts: etcd
+  remote_user: root
+  tasks:
+  - name: remove
+    ignore_errors: true
+    shell : |
+            systemctl stop etcd
+            rm -rf /var/lib/etcd/* 
+            rm -rf /etc/etcd/*  
+            rm -rf /tmp/etcd* 
+            rm -rf /tmp/init-keys/* 
+            rm -rf /usr/bin/etcd* 
